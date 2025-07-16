@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-const MAX_DATA_BASE_URL = 'https://rds.skytins.com.br:13345/v2'
+const MAX_DATA_BASE_URL = process.env.MAX_DATA_API_URL || 'https://rds.skytins.com.br:13345/v2'
+
+if (!process.env.MAX_DATA_API_URL) {
+  console.warn(`[WARN] A variável de ambiente MAX_DATA_API_URL não está definida. Usando valor padrão: "${MAX_DATA_BASE_URL}"`)
+}
 
 export async function GET(
   request: NextRequest,
@@ -84,7 +88,13 @@ export async function GET(
     }
 
   } catch (error) {
-    console.error('[MAX-DATA-PROXY] Erro no proxy:', error)
+    console.error('[MAX-DATA-PROXY] Erro detalhado no proxy:', {
+      message: error instanceof Error ? error.message : 'Erro desconhecido',
+      name: error instanceof Error ? error.name : 'N/A',
+      stack: error instanceof Error ? error.stack : 'N/A',
+      cause: error instanceof Error ? error.cause : 'N/A',
+      fullError: JSON.stringify(error, Object.getOwnPropertyNames(error))
+    })
     return NextResponse.json(
       { 
         error: 'Erro interno no proxy',
@@ -180,7 +190,13 @@ export async function PUT(
     }
 
   } catch (error) {
-    console.error('[MAX-DATA-PROXY] Erro no proxy PUT:', error)
+    console.error('[MAX-DATA-PROXY] Erro detalhado no proxy PUT:', {
+      message: error instanceof Error ? error.message : 'Erro desconhecido',
+      name: error instanceof Error ? error.name : 'N/A',
+      stack: error instanceof Error ? error.stack : 'N/A',
+      cause: error instanceof Error ? error.cause : 'N/A',
+      fullError: JSON.stringify(error, Object.getOwnPropertyNames(error))
+    })
     return NextResponse.json(
       { 
         error: 'Erro interno no proxy PUT',
