@@ -2,12 +2,51 @@ import { NextResponse } from 'next/server'
 
 const MAX_DATA_BASE_URL = process.env.MAX_DATA_API_URL || 'https://rds.skytins.com.br:13345/v2'
 
+interface DiagnosticTest {
+  success: boolean
+  error?: string
+  name?: string
+  cause?: unknown
+  [key: string]: unknown
+}
+
+interface DiagnosticTests {
+  urlParsing?: DiagnosticTest & {
+    protocol?: string
+    hostname?: string
+    port?: string
+    pathname?: string
+  }
+  dnsResolution?: DiagnosticTest
+  portConnectivity?: DiagnosticTest & {
+    status?: number
+    statusText?: string
+    headers?: Record<string, string>
+  }
+  apiEndpoint?: DiagnosticTest & {
+    status?: number
+    statusText?: string
+    contentType?: string | null
+    responseSize?: string
+  }
+  environment?: {
+    nodeVersion: string
+    platform: string
+    arch: string
+    env: {
+      hasMaxDataUrl: boolean
+      vercelRegion: string
+      vercelEnv: string
+    }
+  }
+}
+
 export async function GET() {
   const diagnostics = {
     timestamp: new Date().toISOString(),
     environment: 'vercel',
     baseUrl: MAX_DATA_BASE_URL,
-    tests: {} as any
+    tests: {} as DiagnosticTests
   }
 
   console.log('[CONNECTIVITY-TEST] Iniciando testes de conectividade...')
