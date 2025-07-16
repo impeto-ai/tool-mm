@@ -24,7 +24,7 @@ class TokenService {
       } else {
         return Buffer.from(base64, 'base64').toString('utf-8')
       }
-    } catch (error) {
+    } catch (_error) {
       throw new Error('Erro ao decodificar base64url')
     }
   }
@@ -64,7 +64,7 @@ class TokenService {
    */
   decodeToken(token: string): TokenStatus {
     try {
-      const [header, payload, signature] = token.split('.')
+      const [_header, payload, _signature] = token.split('.')
       
       if (!payload) {
         return { isValid: false, empId: 0 }
@@ -99,7 +99,7 @@ class TokenService {
       const now = new Date()
       
       return expirationDate > now
-    } catch (error) {
+    } catch (_error) {
       return false
     }
   }
@@ -122,7 +122,7 @@ class TokenService {
         tokensCount: tokens.length,
         errors: []
       }
-    } catch (error) {
+    } catch (_error) {
       return {
         lastSync: null,
         nextSync: null,

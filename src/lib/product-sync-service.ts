@@ -1,13 +1,11 @@
 import { maxDataApi } from './max-data-api'
-import { supabase, ImageRecord } from './supabase'
+import { supabase } from './supabase'
 import { tokenService } from './token-service'
 import { 
   MaxDataProduct, 
   ProductSyncResult, 
   ProductSyncStatus, 
-  MissingProductInfo,
-  MaxDataGroup,
-  MaxDataSubGroup
+  MissingProductInfo
 } from '@/types'
 
 class ProductSyncService {

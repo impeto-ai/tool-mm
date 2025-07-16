@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
 
     // Testa cada empresa
     for (const tokenData of tokens) {
-      const { empId, token } = tokenData
+      const { empId } = tokenData
       
       if (empId !== 2 && empId !== 3) continue
 

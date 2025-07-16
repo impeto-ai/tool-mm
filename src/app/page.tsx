@@ -22,7 +22,6 @@ import {
   XCircle, 
   Play, 
   Square,
-  Building2,
   Key,
   Timer,
   Package,
@@ -79,7 +78,6 @@ export default function Home() {
     getDuplicateStats,
     formatDate,
     totalUniqueMissingProducts,
-    totalDuplicates,
     hasResults
   } = useProductSync()
 
@@ -672,7 +670,7 @@ export default function Home() {
                   ) : (
                     <div className="text-center py-8 text-muted-foreground">
                       <Search className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                      <p>Nenhum produto encontrado para "{searchTerm}"</p>
+                      <p>Nenhum produto encontrado para &quot;{searchTerm}&quot;</p>
                       <Button
                         variant="link"
                         size="sm"
@@ -681,7 +679,7 @@ export default function Home() {
                       >
                         Limpar filtro
                       </Button>
-                    </div>
+        </div>
                   )}
                 </CardContent>
               </Card>

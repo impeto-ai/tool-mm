@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Image from 'next/image'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Skeleton } from "@/components/ui/skeleton"
@@ -54,7 +55,7 @@ export default function ProductPage({ params }: ProductPageProps) {
           productData = await response2.json()
           empId = 2
         }
-      } catch (err) {
+      } catch (_err) {
         console.log('Produto não encontrado na empresa 2, tentando empresa 3...')
       }
 
@@ -67,7 +68,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             productData = await response3.json()
             empId = 3
           }
-        } catch (err) {
+        } catch (_err) {
           console.log('Produto não encontrado na empresa 3')
         }
       }
@@ -137,7 +138,7 @@ export default function ProductPage({ params }: ProductPageProps) {
     if (productId) {
       loadProduct()
     }
-  }, [productId])
+  }, [productId, loadProduct])
 
   if (loading) {
     return (
@@ -300,9 +301,11 @@ export default function ProductPage({ params }: ProductPageProps) {
           </CardHeader>
           <CardContent>
             {product.imageUrl ? (
-              <img 
+              <Image 
                 src={product.imageUrl} 
                 alt={product.descricao}
+                width={600}
+                height={300}
                 className="w-full h-48 object-cover rounded-lg border"
               />
             ) : product.foto ? (

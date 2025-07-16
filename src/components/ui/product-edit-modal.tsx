@@ -1,13 +1,14 @@
 "use client"
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import { Badge } from "@/components/ui/badge"
+
 import { Card, CardContent } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 import { Alert, AlertDescription } from "@/components/ui/alert"
@@ -18,7 +19,6 @@ import { MaxDataProduct, MaxDataGroup, MaxDataSubGroup } from '@/types'
 import { 
   Save, 
   X, 
-  Upload, 
   Image as ImageIcon, 
   Package, 
   DollarSign, 
@@ -27,7 +27,6 @@ import {
   Loader2,
   CheckCircle,
   Check,
-  Cloud,
   CloudUpload
 } from "lucide-react"
 
@@ -57,7 +56,7 @@ interface ProductFormData {
 
 export function ProductEditModal({ productId, empId, isOpen, onClose, onSave }: ProductEditModalProps) {
   // Estados do produto
-  const [product, setProduct] = useState<MaxDataProduct | null>(null)
+  const [_product, setProduct] = useState<MaxDataProduct | null>(null)
   const [formData, setFormData] = useState<ProductFormData>({
     descricao: '',
     ean: '',
@@ -111,6 +110,7 @@ export function ProductEditModal({ productId, empId, isOpen, onClose, onSave }: 
     if (isOpen && productId && empId) {
       loadProductData()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, productId, empId])
 
   // Filtra subgrupos quando o grupo é alterado
@@ -127,7 +127,7 @@ export function ProductEditModal({ productId, empId, isOpen, onClose, onSave }: 
       setFilteredSubgroups([])
       setFormData(prev => ({ ...prev, idSubGrupo: undefined }))
     }
-  }, [formData.idGrupo, subgroups])
+  }, [formData.idGrupo, formData.idSubGrupo, subgroups])
 
   // Carrega dados do produto
   const loadProductData = async () => {
@@ -428,9 +428,9 @@ export function ProductEditModal({ productId, empId, isOpen, onClose, onSave }: 
                     {imageLoading ? (
                       <Skeleton className="w-32 h-32 rounded" />
                     ) : imagePreview ? (
-                      <img src={imagePreview} alt="Preview" className="w-32 h-32 object-cover rounded border" />
+                      <Image src={imagePreview} alt="Preview" width={128} height={128} className="w-32 h-32 object-cover rounded border" />
                     ) : imageUrl ? (
-                      <img src={imageUrl} alt="Produto" className="w-32 h-32 object-cover rounded border" />
+                      <Image src={imageUrl} alt="Produto" width={128} height={128} className="w-32 h-32 object-cover rounded border" />
                     ) : (
                       <div className="w-32 h-32 border-2 border-dashed border-gray-300 rounded flex items-center justify-center">
                         <ImageIcon className="h-8 w-8 text-gray-400" />
