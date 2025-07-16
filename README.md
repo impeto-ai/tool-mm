@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sistema de Estoque
 
-## Getting Started
+Um sistema moderno de gerenciamento de estoque construído com Next.js 15, TypeScript, Tailwind CSS e shadcn/ui.
 
-First, run the development server:
+## 🚀 Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 15** - Framework React para produção
+- **TypeScript** - Tipagem estática para JavaScript
+- **Tailwind CSS v4** - Framework CSS utility-first
+- **shadcn/ui** - Biblioteca de componentes React reutilizáveis
+- **Lucide React** - Ícones SVG para React
+
+## 📦 Componentes shadcn/ui Instalados
+
+- **button** - Botões interativos
+- **card** - Cartões de conteúdo
+- **table** - Tabelas de dados
+- **input** - Campos de entrada
+- **label** - Rótulos para formulários
+- **form** - Componentes de formulário
+- **select** - Seletores dropdown
+- **dialog** - Modais e diálogos
+- **badge** - Emblemas e etiquetas
+- **alert** - Alertas e notificações
+- **sonner** - Notificações toast
+- **tabs** - Abas de navegação
+- **sidebar** - Barra lateral de navegação
+- **separator** - Separadores visuais
+- **sheet** - Painéis deslizantes
+- **tooltip** - Dicas de ferramentas
+- **skeleton** - Carregamento de esqueleto
+
+## 🎨 Design System
+
+O projeto utiliza um sistema de design consistente baseado no shadcn/ui com:
+
+- **Cores**: Sistema de cores neutras com suporte a modo escuro
+- **Tipografia**: Fontes Geist Sans e Geist Mono
+- **Espaçamento**: Sistema de grid responsivo
+- **Componentes**: Biblioteca completa de componentes reutilizáveis
+
+## 🛠️ Configuração do Projeto
+
+### Estrutura de Pastas
+
+```
+src/
+├── app/                 # App Router do Next.js
+│   ├── globals.css     # Estilos globais e variáveis CSS
+│   ├── layout.tsx      # Layout raiz da aplicação
+│   └── page.tsx        # Página inicial do sistema
+├── components/
+│   └── ui/             # Componentes shadcn/ui
+├── hooks/              # Hooks customizados
+└── lib/
+    └── utils.ts        # Utilitários e helpers
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Scripts Disponíveis
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run dev          # Inicia o servidor de desenvolvimento
+npm run build        # Cria build de produção
+npm run start        # Inicia servidor de produção
+npm run lint         # Executa o linter
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🎯 Funcionalidades Implementadas
 
-## Learn More
+### Dashboard Principal
+- **Cards de estatísticas** - Visão geral do estoque
+- **Filtros de busca** - Pesquisa e filtragem de produtos
+- **Tabela de produtos** - Listagem completa com status
 
-To learn more about Next.js, take a look at the following resources:
+### Recursos do Sistema
+- **Interface responsiva** - Funciona em desktop e mobile
+- **Modo escuro** - Suporte completo a tema escuro
+- **Componentes interativos** - Botões, formulários e modais
+- **Tipagem TypeScript** - Código type-safe
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔧 Próximos Passos
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Integração com banco de dados** - Implementar persistência de dados
+2. **Autenticação** - Sistema de login e permissões
+3. **CRUD completo** - Criar, editar e excluir produtos
+4. **Relatórios** - Gráficos e análises de estoque
+5. **Notificações** - Alertas de estoque baixo
+6. **Export/Import** - Funcionalidades de importação e exportação
 
-## Deploy on Vercel
+## 📝 Configuração Inicial Completa
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+✅ Next.js 15 configurado com TypeScript  
+✅ Tailwind CSS v4 integrado  
+✅ shadcn/ui instalado e configurado  
+✅ Componentes UI essenciais instalados  
+✅ Página inicial funcional criada  
+✅ Sistema de design implementado  
+✅ Estrutura de projeto organizada  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O sistema está pronto para desenvolvimento adicional e implementação de funcionalidades específicas do negócio.
