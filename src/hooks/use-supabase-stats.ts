@@ -50,11 +50,11 @@ export function useSupabaseStats() {
     loadStats()
   }, [loadStats])
 
-  // Auto-refresh a cada 5 minutos
+  // Auto-refresh reduzido para a cada 30 minutos
   useEffect(() => {
     const interval = setInterval(() => {
       loadStats()
-    }, 5 * 60 * 1000) // 5 minutos
+    }, 30 * 60 * 1000) // 30 minutos
 
     return () => clearInterval(interval)
   }, [loadStats])

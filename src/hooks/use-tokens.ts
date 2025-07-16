@@ -86,11 +86,11 @@ export function useTokens() {
     loadTokens()
   }, [loadTokens])
 
-  // Auto-refresh a cada 5 minutos para atualizar status
+  // Auto-refresh reduzido para a cada 15 minutos para atualizar status
   useEffect(() => {
     const interval = setInterval(() => {
       loadTokens()
-    }, 5 * 60 * 1000) // 5 minutos
+    }, 15 * 60 * 1000) // 15 minutos
 
     return () => clearInterval(interval)
   }, [loadTokens])

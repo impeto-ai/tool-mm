@@ -158,13 +158,13 @@ export function useProductSync() {
     updateSyncStatus()
   }, [updateSyncStatus])
 
-  // Auto-refresh a cada 2 minutos se não estiver rodando
+  // Auto-refresh reduzido para a cada 10 minutos se não estiver rodando
   useEffect(() => {
     const interval = setInterval(() => {
       if (!syncStatus.isRunning) {
         updateSyncStatus()
       }
-    }, 2 * 60 * 1000) // 2 minutos
+    }, 10 * 60 * 1000) // 10 minutos
 
     return () => clearInterval(interval)
   }, [syncStatus.isRunning, updateSyncStatus])
